@@ -5,6 +5,7 @@ import packageJson from '../package.json';
 // ----------------------------------------------------------------------
 
 export type ConfigValue = {
+  isStaticExport: boolean;
   site: {
     name: string;
     serverUrl: string;
@@ -39,11 +40,12 @@ export type ConfigValue = {
 export const CONFIG: ConfigValue = {
   site: {
     name: 'Minimals',
-    serverUrl: import.meta.env.VITE_SERVER_URL ?? '',
-    assetURL: import.meta.env.VITE_ASSET_URL ?? '',
-    basePath: import.meta.env.VITE_BASE_PATH ?? '',
+    serverUrl: process.env.NEXT_PUBLIC_SERVER_URL ?? '',
+    assetURL: process.env.NEXT_PUBLIC_ASSET_URL ?? '',
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? '',
     version: packageJson.version,
   },
+  isStaticExport: JSON.parse(`${process.env.BUILD_STATIC_EXPORT}`),
   /**
    * Auth
    * @method jwt | amplify | firebase | supabase | auth0
@@ -54,44 +56,44 @@ export const CONFIG: ConfigValue = {
     redirectPath: paths.dashboard.root,
   },
   /**
-   * APMapboxI
+   * Mapbox
    */
   mapbox: {
-    apiKey: import.meta.env.VITE_MAPBOX_API_KEY ?? '',
+    apiKey: process.env.NEXT_PUBLIC_MAPBOX_API_KEY ?? '',
   },
   /**
    * Firebase
    */
   firebase: {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY ?? '',
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN ?? '',
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID ?? '',
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET ?? '',
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID ?? '',
-    appId: import.meta.env.VITE_FIREBASE_APPID ?? '',
-    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID ?? '',
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY ?? '',
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN ?? '',
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ?? '',
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET ?? '',
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ?? '',
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APPID ?? '',
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID ?? '',
   },
   /**
    * Amplify
    */
   amplify: {
-    userPoolId: import.meta.env.VITE_AWS_AMPLIFY_USER_POOL_ID ?? '',
-    userPoolWebClientId: import.meta.env.VITE_AWS_AMPLIFY_USER_POOL_WEB_CLIENT_ID ?? '',
-    region: import.meta.env.VITE_AWS_AMPLIFY_REGION ?? '',
+    userPoolId: process.env.NEXT_PUBLIC_AWS_AMPLIFY_USER_POOL_ID ?? '',
+    userPoolWebClientId: process.env.NEXT_PUBLIC_AWS_AMPLIFY_USER_POOL_WEB_CLIENT_ID ?? '',
+    region: process.env.NEXT_PUBLIC_AWS_AMPLIFY_REGION ?? '',
   },
   /**
    * Auth0
    */
   auth0: {
-    clientId: import.meta.env.VITE_AUTH0_CLIENT_ID ?? '',
-    domain: import.meta.env.VITE_AUTH0_DOMAIN ?? '',
-    callbackUrl: import.meta.env.VITE_AUTH0_CALLBACK_URL ?? '',
+    clientId: process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID ?? '',
+    domain: process.env.NEXT_PUBLIC_AUTH0_DOMAIN ?? '',
+    callbackUrl: process.env.NEXT_PUBLIC_AUTH0_CALLBACK_URL ?? '',
   },
   /**
    * Supabase
    */
   supabase: {
-    url: import.meta.env.VITE_SUPABASE_URL ?? '',
-    key: import.meta.env.VITE_SUPABASE_ANON_KEY ?? '',
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
+    key: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '',
   },
 };
