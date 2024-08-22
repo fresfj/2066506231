@@ -61,7 +61,7 @@
     "@tiptap/pm": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
-    "apexcharts": "^3.49.1",
+    "apexcharts": "^3.52.0",
     "autosuggest-highlight": "^3.3.4",
     "aws-amplify": "^6.3.6",
     "axios": "^1.7.2",
